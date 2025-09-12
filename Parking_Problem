@@ -1,0 +1,35 @@
+A parking lit in a mall has rows and coloums of parking space each parking space will be either or full the status 0 and 1 of parking represented as the element of matrix the task is to find index of the row in the parking lot that has most of the parkingfull.
+
+import java.util.Scanner;
+public class ParkingLot {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        int[][] parkingLot = new int[rows][cols];
+        System.out.println("Enter parking lot matrix (0 for empty, 1 for full):");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                parkingLot[i][j] = sc.nextInt();
+            }
+        }
+        int maxFull = -1;
+        int maxRowIndex = -1;
+
+        for (int i = 0; i < rows; i++) {
+            int count = 0;
+            for (int j = 0; j < cols; j++) {
+                if (parkingLot[i][j] == 1) {
+                    count++;
+                }
+            }
+            if (count > maxFull) {
+                maxFull = count;
+                maxRowIndex = i;
+            }
+        System.out.println("Row with most cars (full spaces) is: " + maxRowIndex);
+        sc.close();
+    }
+}
